@@ -33,17 +33,20 @@ export class AppComponent {
   };
   constructor(private http: HttpClient){}
   text=""
-  public alert_text(){
+  /*public alert_text(){
     alert(this.text)
-  }
-  public translate(){
+  }*/
+  public translate(text_for_translation:string){
+    //alert(text_for_translation)
     /*this.http.get<any>('http://127.0.0.1:5002').subscribe(data => {
       this.text = data.translation;
     })*/
-    this.http.post<any>('http://127.0.0.1:5002', {translation_text:'Angular POST Request Example'},this.httpOptions).subscribe(data => {
+    this.text = ""
+    this.http.post<any>('http://127.0.0.1:5002', {translation_text:text_for_translation},this.httpOptions).subscribe(data => {
           this.text = data.translation;
+          //this.alert_text()
     })
-    this.alert_text()
+
   }
 /*this.alert_text()
     this.http.post<any>('http://127.0.0.1:5002', { translation_text: 'Angular POST Request Example' }).subscribe(data => {
@@ -52,8 +55,9 @@ export class AppComponent {
     this.alert_text()
   }*/
   
-  onClick() {
-    this.translate();
+  onClick(text_for_translation:string) {
+    
+    this.translate(text_for_translation);
   }
 }
 
