@@ -10,7 +10,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 import os
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 print(CURR_DIR)
-best_model_t = load_model('C:/TIARA/UNIVERSIDAD/SEMESTRE 7/SISTEMAS INTELIGENTES/PROYECTO MACHINE TRANSLATION FINAL/MachineTranslation/PROYECTO MACHINE TRANSLATION/Models/tr_model_1_2.h5')
+best_model_t = load_model(f'{CURR_DIR}/tr_model_1_2.h5')
 print('CURRENT DIRECTORYYYYYYYYY:',CURR_DIR)
 eng_tokenizer, eng_vocab_size = load_tokenizer(f'{CURR_DIR}/Tokenizers/eng_tokenizer_10000.pickle')
 spa_tokenizer, spa_vocab_size = load_tokenizer(f'{CURR_DIR}/Tokenizers/spa_tokenizer_10000.pickle')
