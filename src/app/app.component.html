@@ -15,7 +15,7 @@
   .button1 {background-color: #94f097;} /* Green */
 
   </style>
-<h2 style="text-align: center;">ENGLISH</h2>
+<h2 style="text-align: center;">{{source_language}}</h2>
 <textarea  id = "input_txt" name="input_txt" #input_txt style="background-color:#02f3e5;
 border-radius:4px;
 font-size:16px;
@@ -24,11 +24,13 @@ display: block;
 margin:auto;
 width:600px;
 height:70px;
-margin-bottom: 50px;" placeholder="Write text">
+margin-bottom: 50px;" placeholder={{input_text_placeholder}}>{{input_text}}
 </textarea>
 <button  (click)="onClick(input_txt.value)" id ="translate_btn" class="button button1" style="display: block;
-margin:auto; margin-bottom: 50px;">TRANSLATE</button>
-<h2 style=" text-align: center;">ESPAÑOL</h2>
+margin:auto; margin-bottom: 40px;">TRANSLATE</button>
+<button  (click)="changeLanguage()" id ="change_language_btn" class="button button1" style="display: block;
+margin:auto; margin-bottom: 40px;">&#8597;</button>
+<h2 style=" text-align: center;">{{target_language}}</h2>
 <textarea id="translate_txt" style="background-color:#02f3e5;
 border-radius:4px;
 font-size:16px;

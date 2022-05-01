@@ -1,22 +1,6 @@
-/*import { Component, OnInit } from '@angular/core';
-declare var name:any
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  ngOnInit():void{
-    new name();
-  }
-  title = 'MT';
-}
-*/
-
 import { Component } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//declare const name:alert("This works")
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 
@@ -33,68 +17,41 @@ export class AppComponent {
   };
   constructor(private http: HttpClient){}
   text=""
-  /*public alert_text(){
-    alert(this.text)
-  }*/
+  route='http://127.0.0.1:5002/eng_spa'
+  source_language = "ENGLISH"
+  target_language = "SPANISH"
+  input_text_placeholder="Write text"
+  input_text = ""
+
   public translate(text_for_translation:string){
-    //alert(text_for_translation)
-    /*this.http.get<any>('http://127.0.0.1:5002').subscribe(data => {
-      this.text = data.translation;
-    })*/
     this.text = ""
-    this.http.post<any>('http://127.0.0.1:5002', {translation_text:text_for_translation},this.httpOptions).subscribe(data => {
+    this.http.post<any>(this.route, {translation_text:text_for_translation},this.httpOptions).subscribe(data => {
           this.text = data.translation;
-          //this.alert_text()
     })
 
   }
-/*this.alert_text()
-    this.http.post<any>('http://127.0.0.1:5002', { translation_text: 'Angular POST Request Example' }).subscribe(data => {
-          this.text = data.translation;
-      })
-    this.alert_text()
-  }*/
   
   onClick(text_for_translation:string) {
     
     this.translate(text_for_translation);
   }
+
+  changeLanguage(){
+    if (this.source_language == "ENGLISH"){
+      this.source_language = "SPANISH";
+      this.target_language = "ENGLISH";
+      this.route='http://127.0.0.1:5002/spa_eng'
+      this.input_text_placeholder="Escribe Texto";
+      this.input_text="";
+    }
+    else{
+      this.source_language = "ENGLISH";
+      this.target_language = "SPANISH";
+      this.route='http://127.0.0.1:5002/eng_spa'
+      this.input_text_placeholder="Write text";
+      this.input_text="";
+    }
+    this.text="";
+    this.input_text="";
+  }
 }
-
-
-/*import { Component, OnInit } from '@angular/core';
-declare var name:any
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  ngOnInit():void{
-    new name();
-  }
-  title = 'MT';
-}
-*/
-
-
-/*
-export class AppComponent {
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private http: HttpClient) { }
-  title = 'Angular Tutorial';
-  text=""
-  
-  public name(){
-
-    this.http.post<any>('https://reqres.in/api/posts', { title: 'Angular POST Request Example' }).subscribe(data => {
-          this.text = data.id;
-      })
-  }
-  onClick() {
-    this.name();
-  }
-}*/
