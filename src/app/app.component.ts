@@ -21,7 +21,6 @@ export class AppComponent {
   source_language = "ENGLISH"
   target_language = "SPANISH"
   input_text_placeholder="Write text"
-  input_text = ""
 
   public translate(text_for_translation:string){
     this.text = ""
@@ -42,16 +41,13 @@ export class AppComponent {
       this.target_language = "ENGLISH";
       this.route='http://127.0.0.1:5002/spa_eng'
       this.input_text_placeholder="Escribe Texto";
-      this.input_text="";
     }
     else{
       this.source_language = "ENGLISH";
       this.target_language = "SPANISH";
       this.route='http://127.0.0.1:5002/eng_spa'
       this.input_text_placeholder="Write text";
-      this.input_text="";
     }
     this.text="";
-    this.input_text="";
   }
 }
